@@ -5,7 +5,7 @@ import type { AppProps as Props } from '@polkadot/react-components/types';
 
 import React, { useRef } from 'react';
 
-import { HelpOverlay, Tabs, MarkWarning } from '@polkadot/react-components';
+import { HelpOverlay, Tabs } from '@polkadot/react-components';
 
 import DelegateModal from './modals/Delegate';
 import basicMd from './md/basic.md';
