@@ -33,7 +33,6 @@ function DelegationApp ({ basePath }: Props): React.ReactElement<Props> {
         basePath={basePath}
         items={tabsRef.current}
       />
-      <p><MarkWarning content={t<string>('Governance Delegation is still experimental and some issues may still remain.')} /></p>
       <h1>Delegate</h1>
       <p>Delegating votes allows others to vote with your tokens. but not spend or transfer them, in a non-custodial fashion. Read more about liquid democracy</p>
       <DelegateModal
