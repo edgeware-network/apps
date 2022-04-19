@@ -38,7 +38,7 @@ function DelegationApp ({ basePath }: Props): React.ReactElement<Props> {
       <DelegateModal
         onClose={() => close}
       />
-      <h1>Undelegate</h1>
+      <h1>Your Representatives</h1>
       <Accounts/>
     </main>
   );
