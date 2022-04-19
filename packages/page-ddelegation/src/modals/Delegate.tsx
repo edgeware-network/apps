@@ -7,7 +7,7 @@ import type { AmountValidateState } from '../Accounts/types';
 import BN from 'bn.js';
 import React, { useState } from 'react';
 
-import { ConvictionDropdown, InputAddress, InputBalance, Modal, TxButton, Table } from '@polkadot/react-components';
+import { ConvictionDropdown, InputAddress, InputBalance, Modal, TxButton } from '@polkadot/react-components';
 import { useApi } from '@polkadot/react-hooks';
 import { BalanceFree } from '@polkadot/react-query';
 import { BN_ZERO } from '@polkadot/util';
@@ -42,7 +42,7 @@ function Delegate ({ onClose, previousAmount, previousConviction, previousDelega
     conviction !== previousConviction?.toNumber();
 
   return (
-    <Table>
+    <table>
       <Modal.Content>
         <Modal.Columns hint={
           <>
@@ -116,7 +116,7 @@ function Delegate ({ onClose, previousAmount, previousConviction, previousDelega
           tx={api.tx.democracy.delegate}
         />
       </Modal.Actions>
-    </Table>
+    </table>
   );
 }
 
