@@ -34,10 +34,11 @@ function DelegationApp ({ basePath }: Props): React.ReactElement<Props> {
         items={tabsRef.current}
       />
       <h1>Delegate</h1>
-      <p>Delegating votes allows others to vote with your tokens. but not spend or transfer them, in a non-custodial fashion. Read more about liquid democracy</p>
+      <p>Delegating votes allows others to vote with your tokens. but not spend or transfer them, in a non-custodial fashion. Read more about liquid democracy.</p>
       <DelegateModal
         onClose={() => close}
       />
+      <p>Accounts that you are actively delegating to will show up under &quot;your representatives&quot;.</p>
       <h1>Your Representatives</h1>
       <Accounts/>
     </main>

@@ -360,11 +360,9 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
   }
 
   return (
-    <div className="isdelegating?">
-      {delegation?.accountDelegated && ( 
-    <tr className={className}>
-      
-        
+    <div className='isDelegating?'>
+      {delegation?.accountDelegated && (
+        <tr className={className}>
           <td className='favorite'>
             <Icon
               color={isFavorite ? 'orange' : 'gray'}
@@ -572,7 +570,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
               <AddressMini value={meta.parentAddress} />
             )}
           </td>
-          <td className='number'>
+          {/* <td className='number'>
             <CryptoType accountId={address} />
           </td>
           <td className='all'>
@@ -590,7 +588,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
               withBalanceToggle
               withExtended={false}
             />
-          </td>
+          </td> */}
           {delegation?.accountDelegated && (
             <td className='button'>
               {isFunction(api.api.tx.balances?.transfer) && (
