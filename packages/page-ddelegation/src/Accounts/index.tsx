@@ -9,8 +9,8 @@ import BN from 'bn.js';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Button, Input, Table } from '@polkadot/react-components';
-import { useAccounts, useApi, useCall, useFavorites, useIpfs, useLedger, useLoadingDelay, useToggle } from '@polkadot/react-hooks';
+import { Input, Table } from '@polkadot/react-components';
+import { useAccounts, useApi, useCall, useFavorites, useLoadingDelay } from '@polkadot/react-hooks';
 import { FormatBalance } from '@polkadot/react-query';
 import { BN_ZERO } from '@polkadot/util';
 
@@ -39,16 +39,15 @@ interface Sorted {
 interface Props {
   className?: string;
   onStatusChange: (status: ActionStatus) => void;
+  delegation?: Delegation;
 }
 
 const STORE_FAVS = 'accounts:favorites';
 
-
-
-function Overview ({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
+function Overview ({ className = '', delegation }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
-  const { allAccounts, hasAccounts } = useAccounts();
+  const { allAccounts } = useAccounts();
   // const { isIpfs } = useIpfs();
   // const { isLedgerEnabled } = useLedger();
   // const [isCreateOpen, toggleCreate] = useToggle();
@@ -73,16 +72,16 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
   });
   const isLoading = useLoadingDelay();
 
-  const headerRef = useRef([
-    [t('accounts'), 'start', 3],
-    [t('parent'), 'address media--1400'],
-    [t('type')],
-    [t('tags'), 'start'],
-    [t('transactions'), 'media--1500'],
-    [t('balances'), 'expand'],
-    [],
-    [undefined, 'media--1400']
-  ]);
+  // const headerRef = useRef([
+  //   [t('accounts'), 'start', 3],
+  //   [t('parent'), 'address media--1400'],
+  //   [t('type')],
+  //   [t('tags'), 'start'],
+  //   [t('transactions'), 'media--1500'],
+  //   [t('balances'), 'expand'],
+  //   [],
+  //   [undefined, 'media--1400']
+  // ]);
 
   useEffect((): void => {
     const sortedAccounts = sortAccounts(allAccounts, favorites);
@@ -161,7 +160,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
         empty={!isLoading && sortedAccountsWithDelegation && t<string>("You don't have any accounts. Some features are currently hidden and will only become available once you have accounts.")}
         filter={filter}
         footer={footer}
-        header={headerRef.current}
+        // header={headerRef.current}
       >
         {!isLoading && sortedAccountsWithDelegation?.map(({ account, delegation, isFavorite }, index): React.ReactNode => (
           <Account
