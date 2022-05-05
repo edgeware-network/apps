@@ -82,6 +82,7 @@
       "@polkadot/test-support/*": [ "packages/test-support/src/*" ]
     },
     "skipLibCheck": true,
+    "noUnusedLocals": false,
     "typeRoots": [
       "./node_modules/@polkadot/ts",
       "./node_modules/@types"
