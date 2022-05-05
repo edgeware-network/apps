@@ -5,7 +5,7 @@ import type { AppProps as Props } from '@polkadot/react-components/types';
 
 import React, { useRef } from 'react';
 
-import { HelpOverlay, Tabs } from '@polkadot/react-components';
+import { HelpOverlay, Tabs, MarkWarning } from '@polkadot/react-components';
 
 import DelegateModal from './modals/Delegate';
 import basicMd from './md/basic.md';
@@ -38,7 +38,7 @@ function DelegationApp ({ basePath }: Props): React.ReactElement<Props> {
       <DelegateModal
         onClose={() => close}
       />
-      <p>Accounts that you are actively delegating to will show up under &quot;your representatives&quot;.</p>
+      <p><MarkWarning content={t<string>('Accounts that you are actively delegating to will show under "your representatives".')} /></p>
       <h1>Your Representatives</h1>
       <Accounts/>
     </main>

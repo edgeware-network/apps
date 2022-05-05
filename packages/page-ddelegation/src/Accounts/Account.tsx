@@ -16,10 +16,10 @@ import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 // import { ApiPromise } from '@polkadot/api';
-import { AddressInfo, AddressMini, AddressSmall, Badge, Button, CryptoType, Forget, Icon, IdentityIcon, Tags } from '@polkadot/react-components';
+import { AddressMini, AddressSmall, Badge, Button, Forget, Icon, IdentityIcon } from '@polkadot/react-components';
 import { useAccountInfo, useApi, useCall, useToggle } from '@polkadot/react-hooks';
 import { keyring } from '@polkadot/ui-keyring';
-import { BN_ZERO, formatBalance, formatNumber, isFunction } from '@polkadot/util';
+import { formatBalance, formatNumber, isFunction } from '@polkadot/util';
 
 import Backup from '../modals/Backup';
 import ChangePass from '../modals/ChangePass';
@@ -628,7 +628,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
           type='address'
         />
       </td> */}
-    </tr>
+        </tr>
       )}
     </div>
   );
