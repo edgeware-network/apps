@@ -17,13 +17,23 @@ import { expandEndpoints } from './util';
 export function createProduction (t: TFunction, firstOnly: boolean, withSort: boolean): LinkOption[] {
   return expandEndpoints(t, [
     // first one is default network
-     {
+    {
       dnslink: 'edgeware',
       info: 'edgeware',
       text: t('rpc.prod.edgeware', 'Edgeware', { ns: 'apps-config' }),
       providers: {
-        'Commonwealth Labs': 'wss://mainnet.edgewa.re',
-        OnFinality: 'wss://edgeware.api.onfinality.io/public-ws'
+        JelliedOwl: 'wss://edgeware.jelliedowl.net',
+        'Commonwealth Labs': 'wss://mainnet3.edgewa.re',        
+        OnFinality: 'wss://edgeware.api.onfinality.io/public-ws',
+        Dwelllir: 'wss://edgeware-rpc.dwellir.com'
+      }
+    },
+    {
+      dnslink: 'kabocha',
+      info: 'kabocha',
+      text: t('rpc.prod.kabocha', 'Kabocha', { ns: 'apps-config' }),
+      providers: {
+        JelliedOwl: 'wss://kabocha.jelliedowl.net'
       }
     },
     {
