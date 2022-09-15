@@ -32,7 +32,8 @@ function createExternals (t: TFunction): ItemRoute[] {
 //    { href: 'https://github.com/polkadot-js/apps', icon: 'code-branch', name: 'github', text: t<string>('nav.github', 'GitHub', { ns: 'apps-routing' }) },
 //    { href: 'https://wiki.polkadot.network', icon: 'book', name: 'wiki', text: t<string>('nav.wiki', 'Wiki', { ns: 'apps-routing' }) }
     { href: 'https://github.com/edgeware-network/edgeware-dotjs-apps', icon: 'code-branch', name: 'github', text: t<string>('nav.github', 'GitHub', { ns: 'apps-routing' }) },
-    { href: 'https://docs.edgeware.wiki/', icon: 'book', name: 'wiki', text: t<string>('nav.wiki', 'Wiki', { ns: 'apps-routing' }) }
+    { href: 'https://docs.edgeware.wiki/', icon: 'book', name: 'wiki', text: t<string>('nav.wiki', 'Wiki', { ns: 'apps-routing' }) },
+    { href: 'https://simple.edgeware.app/', icon: 'list', name: 'simple ui', text: t<string>('nav.simple', 'Simple UI', { ns: 'apps-routing' }) }
   ];
 }
 
