@@ -23,9 +23,9 @@ export function createProduction (t: TFunction, firstOnly: boolean, withSort: bo
       text: t('rpc.prod.edgeware', 'Edgeware', { ns: 'apps-config' }),
       providers: {
         JelliedOwl: 'wss://edgeware.jelliedowl.net',
-        'Commonwealth Labs': 'wss://mainnet3.edgewa.re',        
+        'Commonwealth Labs': 'wss://mainnet3.edgewa.re',
         OnFinality: 'wss://edgeware.api.onfinality.io/public-ws',
-        Dwelllir: 'wss://edgeware-rpc.dwellir.com'
+        Dwellir: 'wss://edgeware-rpc.dwellir.com'
       }
     },
     {
