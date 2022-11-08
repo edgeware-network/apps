@@ -1,5 +1,5 @@
-name: PR
-on: [pull_request]
+# name: PR
+# on: [pull_request]
 
 jobs:
   pr:
