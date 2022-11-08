@@ -16,7 +16,18 @@ import { getTeleports } from './util';
 //
 // IMPORTANT: Alphabetical based on text
 export const prodParasPolkadot: EndpointOption[] = [
-
+  {
+    dnslink: 'edgeware',
+    // genesisHash: POLKADOT_GENESIS,
+    info: 'edgeware',
+    text: 'Edgeware',
+    providers: {
+      JelliedOwl: 'wss://edgeware.jelliedowl.net',
+      'Commonwealth Labs': 'wss://mainnet3.edgewa.re',
+      OnFinality: 'wss://edgeware.api.onfinality.io/public-ws',
+      Dwellir: 'wss://edgeware-rpc.dwellir.com'
+    }
+  }
 ];
 
 export const prodParasPolkadotCommon: EndpointOption[] = [
@@ -25,7 +36,7 @@ export const prodParasPolkadotCommon: EndpointOption[] = [
 
 export const prodRelayPolkadot: EndpointOption = {
   dnslink: 'edgeware',
-  genesisHash: POLKADOT_GENESIS,
+  // genesisHash: POLKADOT_GENESIS,
   info: 'edgeware',
   text: 'Edgeware',
   providers: {
