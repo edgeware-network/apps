@@ -19,7 +19,7 @@ const PROPOSE: Record<string, number> = {
   [KULUPU_GENESIS]: 1,
   [KUSAMA_GENESIS]: 1 / 2,
   [POLKADOT_GENESIS]: 3 / 5,
-  default: 1 / 2
+  default: 3 / 5
 };
 
 const SLASH: Record<string, number> = {
