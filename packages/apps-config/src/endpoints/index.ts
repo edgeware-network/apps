@@ -21,7 +21,7 @@ export function createWsEndpoints (t: TFunction = defaultT, firstOnly = false, w
       isDisabled: false,
       isHeader: true,
       isSpaced: true,
-      text: t('rpc.header.polkadot.relay', 'Edgeware Network', { ns: 'apps-config' }),
+      text: t('rpc.header.edgeware.live', 'Edgeware Ecosystem', { ns: 'apps-config' }),
       textBy: '',
       value: ''
     },
