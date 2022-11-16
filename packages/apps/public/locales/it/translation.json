@@ -1727,7 +1727,7 @@
   "rpc.header.dev": "Sviluppo",
   "rpc.header.kusama.relay": "",
   "rpc.header.live": "Mainnet",
-  "rpc.header.edgeware.live": "",
+  "rpc.header.edgeware.live": "Edgeware Ecosistema",
   "rpc.header.polkadot.relay": "",
   "rpc.header.rococo.relay": "",
   "rpc.header.test": "Testnet",
