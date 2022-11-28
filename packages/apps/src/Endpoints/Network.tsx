@@ -74,6 +74,7 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
                   ? t<string>('Kusama Parachain')
                   : isDOTpara
                     ? t<string>('Polkadot Parachain')
+                    : t<string>('')
               }
             </div>
           )}
