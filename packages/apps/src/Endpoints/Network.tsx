@@ -54,7 +54,7 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
         />
         <div className='endpointValue'>
           <div>{name}</div>
-          {isSelected && (isRelay || !!paraId) && (
+          {isSelected && !!isEdgeverse && (isRelay || !!paraId) && (
             <div className='endpointExtra'>
               {isRelay
                 ? t<string>('Relay chain')
@@ -64,15 +64,15 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
                     ? t<string>('{{relay}} Common', { replace: { relay } })
                     : t<string>('{{relay}} Parachain', { replace: { relay } })
               }
-              {isEdgeverse
+            </div>
+          )}
+          {isEdgeverse
                 ? t<string>('Solochain')
                 : isKSMpara
                   ? t<string>('Kusama Parachain')
                   : isDOTpara
                     ? t<string>('Polkadot Parachain')
               }
-            </div>
-          )}
         </div>
       </div>
       {isSelected && providers.map(({ name, url }): React.ReactNode => (
