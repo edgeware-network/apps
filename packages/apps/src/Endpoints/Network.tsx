@@ -66,13 +66,17 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
               }
             </div>
           )}
-          {isEdgeverse
-                ? t<string>('Solochain')
-                : isKSMpara
-                  ? t<string>('Kusama Parachain')
-                  : isDOTpara
+          : {isSelected && (isEdgeverse || !!paraId) && (
+              <div className='endpointExtra'>
+                {isEdgeverse
+                  ? t<string>('Solochain')
+                  : isKSMpara
+                    ? t<string>('Kusama Parachain')
+                    : isDOTpara
                     ? t<string>('Polkadot Parachain')
-              }
+                }
+              </div>
+          )}
         </div>
       </div>
       {isSelected && providers.map(({ name, url }): React.ReactNode => (
