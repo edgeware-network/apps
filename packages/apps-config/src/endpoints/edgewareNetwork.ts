@@ -24,6 +24,7 @@ export const prodParasEdgeware: EndpointOption[] = [
     providers: {
       JelliedOwl: 'wss://kabocha.jelliedowl.net'
     }
+  }
 ];
 
 export const prodParasEdgewareCommon: EndpointOption[] = [
