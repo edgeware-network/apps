@@ -21,7 +21,7 @@ export function createWsEndpoints (t: TFunction = defaultT, firstOnly = false, w
       isDisabled: false,
       isHeader: true,
       isSpaced: true,
-      isRelay: false,
+      isEdgeverse: true,
       text: t('rpc.header.edgeware.live', 'Edgeware Ecosystem', { ns: 'apps-config' }),
       textBy: '',
       value: ''
