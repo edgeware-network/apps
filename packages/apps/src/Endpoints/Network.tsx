@@ -69,7 +69,7 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
         </div>
         <div className='endpointValue'>
           <div>{name}</div>
-            {isSelected && (isEdgeverse || !!paraId) && (
+          {isSelected && (isEdgeverse || !!paraId) && (
             <div className='endpointExtra'>
               {isEdgeverse
                 ? t<string>('Solochain')
