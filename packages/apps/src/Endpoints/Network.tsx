@@ -54,22 +54,8 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
         />
         <div className='endpointValue'>
           <div>{name}</div>
-          <div>
-          {isSelected && !!isEdgeverse && (isRelay || !!paraId) && (
-            <div className='endpointExtra'>
-              {isRelay
-                ? t<string>('Relay chain')
-                : paraId && paraId < 1000
-                  ? t<string>('{{relay}} System', { replace: { relay } })
-                  : paraId && paraId < 2000
-                    ? t<string>('{{relay}} Common', { replace: { relay } })
-                    : t<string>('{{relay}} Parachain', { replace: { relay } })
-              }
-            </div>
-          )}
-          </div>
-          <div>
-          {isSelected && isEdgeverse && (
+          {if (isEdgeverse = true) {
+            isSelected && isEdgeverse && (
             <div className='endpointExtra'>
               {isEdgeverse
                 ? t<string>('Solochain')
@@ -80,8 +66,19 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
                     : t<string>('')
               }
             </div>
-          )}
-          </div>
+          )} else {
+            isSelected && (isRelay || !!paraId) && (
+            <div className='endpointExtra'>
+              {isRelay
+                ? t<string>('Relay chain')
+                : paraId && paraId < 1000
+                  ? t<string>('{{relay}} System', { replace: { relay } })
+                  : paraId && paraId < 2000
+                    ? t<string>('{{relay}} Common', { replace: { relay } })
+                    : t<string>('{{relay}} Parachain', { replace: { relay } })
+              }
+            </div>
+          )}}
         </div>
       </div>
       {isSelected && providers.map(({ name, url }): React.ReactNode => (
