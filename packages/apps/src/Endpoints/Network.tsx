@@ -65,17 +65,17 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
                     : t<string>('{{relay}} Parachain', { replace: { relay } })
               }
             </div>
-          )}
-          : {isSelected && (isEdgeverse || !!paraId) && (
-              <div className='endpointExtra'>
-                {isEdgeverse
-                  ? t<string>('Solochain')
-                  : isKSMpara
-                    ? t<string>('Kusama Parachain')
-                    : isDOTpara
+          )};
+          {isSelected && (isEdgeverse || !!paraId) && (
+            <div className='endpointExtra'>
+              {isEdgeverse
+                ? t<string>('Solochain')
+                : isKSMpara
+                  ? t<string>('Kusama Parachain')
+                  : isDOTpara
                     ? t<string>('Polkadot Parachain')
-                }
-              </div>
+              }
+            </div>
           )}
         </div>
       </div>
