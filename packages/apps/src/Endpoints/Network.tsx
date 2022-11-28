@@ -64,6 +64,13 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
                     ? t<string>('{{relay}} Common', { replace: { relay } })
                     : t<string>('{{relay}} Parachain', { replace: { relay } })
               }
+              {isEdgeverse
+                ? t<string>('Solochain')
+                : isKSMpara
+                  ? t<string>('Kusama Parachain')
+                  : isDOTpara
+                    ? t<string>('Polkadot Parachain')
+              }
             </div>
           )}
         </div>
