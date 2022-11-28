@@ -65,19 +65,19 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
                     : t<string>('{{relay}} Parachain', { replace: { relay } })
               }
             </div>
-          )};
-          {isSelected && (isEdgeverse || !!paraId) && (
-            <div className='endpointExtra'>
-              {isEdgeverse
-                ? t<string>('Solochain')
-                : isKSMpara
-                  ? t<string>('Kusama Parachain')
-                  : isDOTpara
-                    ? t<string>('Polkadot Parachain')
-                    : t<string>('')
-              }
-            </div>
           )}
+          : {isSelected && (isEdgeverse || !!paraId) && (
+              <div className='endpointExtra'>
+                {isEdgeverse
+                  ? t<string>('Solochain')
+                  : isKSMpara
+                    ? t<string>('Kusama Parachain')
+                    : isDOTpara
+                      ? t<string>('Polkadot Parachain')
+                      : t<string>('')
+                }
+              </div>
+            )}
         </div>
       </div>
       {isSelected && providers.map(({ name, url }): React.ReactNode => (
