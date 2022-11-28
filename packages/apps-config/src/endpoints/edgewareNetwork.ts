@@ -15,7 +15,15 @@ import { getTeleports } from './util';
 //
 // IMPORTANT: Alphabetical based on text
 export const prodParasEdgeware: EndpointOption[] = [
-
+  {
+    info: 'kabocha',
+    homepage: 'https://kabocha.network',
+    isKSMpara: true,
+    paraId: 2113,
+    text: 'Kabocha',
+    providers: {
+      JelliedOwl: 'wss://kabocha.jelliedowl.net'
+    }
 ];
 
 export const prodParasEdgewareCommon: EndpointOption[] = [
