@@ -54,6 +54,7 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
         />
         <div className='endpointValue'>
           <div>{name}</div>
+          <div>
           {isSelected && !!isEdgeverse && (isRelay || !!paraId) && (
             <div className='endpointExtra'>
               {isRelay
@@ -66,7 +67,8 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
               }
             </div>
           )}
-          <div>{name}</div>
+          </div>
+          <div>
           {isSelected && isEdgeverse && (
             <div className='endpointExtra'>
               {isEdgeverse
@@ -79,6 +81,7 @@ function NetworkDisplay ({ apiUrl, className = '', setApiUrl, value: { icon, isC
               }
             </div>
           )}
+          </div>
         </div>
       </div>
       {isSelected && providers.map(({ name, url }): React.ReactNode => (
