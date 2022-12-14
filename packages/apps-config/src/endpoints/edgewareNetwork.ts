@@ -24,7 +24,7 @@ export const prodParasEdgewareCommon: EndpointOption[] = [
 
 export const prodEdgewareNetwork: EndpointOption = {
   dnslink: 'edgeware',
-  genesisHash: '0x742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b',
+  // genesisHash: '0x742a2ca70c2fda6cee4f8df98d64c4c670a052d9568058982dad9d5a7a135c5b',
   info: 'edgeware',
   text: 'Edgeware',
   providers: {
