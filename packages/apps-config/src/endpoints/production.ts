@@ -5,6 +5,7 @@ import type { EndpointOption } from './types';
 
 export * from './productionRelayKusama';
 export * from './productionRelayPolkadot';
+export * from './edgewareNetwork';
 
 /* eslint-disable sort-keys */
 
