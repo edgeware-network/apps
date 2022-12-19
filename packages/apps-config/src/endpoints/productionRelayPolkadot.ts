@@ -38,7 +38,7 @@ export const prodParasPolkadot: EndpointOption[] = [
     paraId: 2051,
     text: 'Ajuna Network',
     providers: {
-      // AjunaNetwork: 'wss://rpc-parachain.ajuna.network' // https://github.com/polkadot-js/apps/issues/8039
+      AjunaNetwork: 'wss://rpc-parachain.ajuna.network'
     }
   },
   {
@@ -60,6 +60,7 @@ export const prodParasPolkadot: EndpointOption[] = [
       Blast: 'wss://astar.public.blastapi.io',
       Dwellir: 'wss://astar-rpc.dwellir.com',
       OnFinality: 'wss://astar.api.onfinality.io/public-ws',
+      RadiumBlock: 'wss://astar.public.curie.radiumblock.co/ws',
       Pinknode: 'wss://public-rpc.pinknode.io/astar',
       'Automata 1RPC': 'wss://1rpc.io/astr',
       // NOTE: Keep this as the last entry, nothing after it
@@ -79,17 +80,17 @@ export const prodParasPolkadot: EndpointOption[] = [
     paraId: 2030,
     text: 'Bifrost',
     providers: {
-      Liebi: 'wss://hk.p.bifrost-rpc.liebi.com/ws'
+      Liebi: 'wss://hk.p.bifrost-rpc.liebi.com/ws',
+      OnFinality: 'wss://bifrost-polkadot.api.onfinality.io/public-ws'
     }
   },
   {
     info: 'bitgreen',
-    isUnreachable: true,
-    homepage: 'https://www.bitgreenswiss.org/crowdloan.html',
+    homepage: 'https://www.bitgreen.org',
     text: 'Bitgreen',
     paraId: 2048,
     providers: {
-      Bitgreen: 'wss://bitgreen.org/ws'
+      Bitgreen: 'wss://mainnet.bitgreen.org'
     }
   },
   {
@@ -99,8 +100,7 @@ export const prodParasPolkadot: EndpointOption[] = [
     text: 'Centrifuge',
     providers: {
       Centrifuge: 'wss://fullnode.parachain.centrifuge.io',
-      OnFinality: 'wss://centrifuge-parachain.api.onfinality.io/public-ws',
-      Dwellir: 'wss://centrifuge-rpc.dwellir.com'
+      OnFinality: 'wss://centrifuge-parachain.api.onfinality.io/public-ws'
     }
   },
   {
@@ -109,8 +109,8 @@ export const prodParasPolkadot: EndpointOption[] = [
     paraId: 2002,
     text: 'Clover',
     providers: {
-      Clover: 'wss://rpc-para.clover.finance',
-      OnFinality: 'wss://clover.api.onfinality.io/public-ws'
+      Clover: 'wss://rpc-para.clover.finance'
+      // OnFinality: 'wss://clover.api.onfinality.io/public-ws' // https://github.com/polkadot-js/apps/issues/8355, then enabled in https://github.com/polkadot-js/apps/pull/8413, then broken in https://github.com/polkadot-js/apps/issues/8421
     }
   },
   {
@@ -184,6 +184,16 @@ export const prodParasPolkadot: EndpointOption[] = [
     }
   },
   {
+    info: 'frequency',
+    homepage: 'https://frequency.xyz',
+    paraId: 2091,
+    text: 'Frequency',
+    providers: {
+      'Frequency 0': 'wss://0.rpc.frequency.xyz',
+      'Frequency 1': 'wss://1.rpc.frequency.xyz'
+    }
+  },
+  {
     info: 'geminis',
     isUnreachable: true,
     homepage: 'https://geminis.network/',
@@ -191,6 +201,15 @@ export const prodParasPolkadot: EndpointOption[] = [
     text: 'Geminis',
     providers: {
       Geminis: 'wss://rpc.geminis.network'
+    }
+  },
+  {
+    info: 'hashed',
+    homepage: 'https://hashed.network/',
+    paraId: 2093,
+    text: 'Hashed Network',
+    providers: {
+      'Hashed Systems': 'wss://c1.hashed.network'
     }
   },
   {
@@ -332,8 +351,18 @@ export const prodParasPolkadot: EndpointOption[] = [
     paraId: 2012,
     text: 'Parallel',
     providers: {
-      OnFinality: 'wss://parallel.api.onfinality.io/public-ws',
+      // OnFinality: 'wss://parallel.api.onfinality.io/public-ws', // https://github.com/polkadot-js/apps/issues/8355, then enabled in https://github.com/polkadot-js/apps/pull/8413, then broken in https://github.com/polkadot-js/apps/issues/8421
       Parallel: 'wss://rpc.parallel.fi'
+    }
+  },
+  {
+    info: 'pendulum',
+    homepage: 'https://pendulumchain.org/',
+    paraId: 2094,
+    text: 'Pendulum',
+    isUnreachable: true,
+    providers: {
+      PendulumChain: 'wss://rpc.pendulumchain.tech'
     }
   },
   {
@@ -400,7 +429,16 @@ export const prodParasPolkadotCommon: EndpointOption[] = [
       OnFinality: 'wss://statemint.api.onfinality.io/public-ws',
       Dwellir: 'wss://statemint-rpc.dwellir.com',
       Pinknode: 'wss://public-rpc.pinknode.io/statemint',
-      RadiumBlock: 'wss://statemint.public.curie.radiumblock.xyz/ws'
+      RadiumBlock: 'wss://statemint.public.curie.radiumblock.co/ws'
+    }
+  },
+  {
+    info: 'polkadotCollectives',
+    paraId: 1001,
+    text: 'Collectives',
+    teleport: [-1],
+    providers: {
+      Parity: 'wss://polkadot-collectives-rpc.polkadot.io'
     }
   }
 ];
@@ -415,9 +453,10 @@ export const prodRelayPolkadot: EndpointOption = {
     OnFinality: 'wss://polkadot.api.onfinality.io/public-ws',
     Dwellir: 'wss://polkadot-rpc.dwellir.com',
     Pinknode: 'wss://public-rpc.pinknode.io/polkadot',
-    RadiumBlock: 'wss://polkadot.public.curie.radiumblock.io/ws',
+    RadiumBlock: 'wss://polkadot.public.curie.radiumblock.co/ws',
     // 'Geometry Labs': 'wss://polkadot.geometry.io/websockets', // https://github.com/polkadot-js/apps/pull/6746
     'Automata 1RPC': 'wss://1rpc.io/dot',
+    'Dotters Net': 'wss://rpc.dotters.network/polkadot',
     // NOTE: Keep this as the last entry, nothing after it
     'light client': 'light://substrate-connect/polkadot' // NOTE: Keep last
   },
