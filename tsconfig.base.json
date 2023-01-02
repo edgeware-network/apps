@@ -36,6 +36,8 @@
       "@polkadot/app-democracy/*": ["page-democracy/src/*"],
       "@polkadot/app-extrinsics": ["page-extrinsics/src"],
       "@polkadot/app-extrinsics/*": ["page-extrinsics/src/*"],
+      "@polkadot/app-ddelegation": [ "packages/page-ddelegation/src" ],
+      "@polkadot/app-ddelegation/*": [ "packages/page-ddelegation/src/*" ],
       "@polkadot/app-explorer": ["page-explorer/src"],
       "@polkadot/app-explorer/*": ["page-explorer/src/*"],
       "@polkadot/app-fellowship": ["page-fellowship/src"],
