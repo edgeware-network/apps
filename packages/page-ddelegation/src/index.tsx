@@ -15,6 +15,9 @@ import { useTranslation } from './translate';
 import useCounter from './useCounter';
 import Vanity from './Vanity';
 
+import DelegateModal from './modals/Delegate';
+
+
 export { useCounter };
 
 const HIDDEN_ACC = ['vanity'];
@@ -44,20 +47,14 @@ function AccountsApp ({ basePath, onStatusChange }: Props): React.ReactElement<P
         hidden={(hasAccounts && !isIpfs) ? undefined : HIDDEN_ACC}
         items={tabsRef.current}
       />
-      <Switch>
-        <Route path={`${basePath}/vanity`}>
-          <Vanity
-            basePath={basePath}
-            onStatusChange={onStatusChange}
-          />
-        </Route>
+      <DelegateModal/>
         <Route>
           <Accounts
             basePath={basePath}
             onStatusChange={onStatusChange}
           />
         </Route>
-      </Switch>
+      
     </main>
   );
 }

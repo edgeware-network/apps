@@ -471,298 +471,333 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
 
   return (
     <>
-      <tr className={`${className}${isExpanded ? ' noBorder' : ''}`}>
-        <td className='favorite'>
-          <Icon
-            color={isFavorite ? 'orange' : 'gray'}
-            icon='star'
-            onClick={_onFavorite}
-          />
-        </td>
-        <td className='together'>
-          <div className='badges'>
-            <div className='info'>
-              {meta.genesisHash
-                ? <Badge color='transparent' />
-                : isDevelopment
-                  ? (
+      {delegation?.accountDelegated && (
+        <div>
+          <tr className={`${className}${isExpanded ? ' noBorder' : ''}`}>
+            <td className='favorite'>
+              <Icon
+                color={isFavorite ? 'orange' : 'gray'}
+                icon='star'
+                onClick={_onFavorite}
+              />
+            </td>
+            <td className='together'>
+              <div className='badges'>
+                <div className='info'>
+                  {meta.genesisHash
+                    ? <Badge color='transparent' />
+                    : isDevelopment
+                      ? (
+                        <Badge
+                          className='warning'
+                          hover={t<string>('This is a development account derived from the known development seed. Do not use for any funds on a non-development network.')}
+                          icon='wrench'
+                        />
+                      )
+                      : (
+                        <Badge
+                          className='warning'
+                          hover={
+                            <div>
+                              <p>{t<string>('This account is available on all networks. It is recommended to link to a specific network via the account options ("only this network" option) to limit availability. For accounts from an extension, set the network on the extension.')}</p>
+                              <p>{t<string>('This does not send any transaction, rather it only sets the genesis in the account JSON.')}</p>
+                            </div>
+                          }
+                          icon='exclamation-triangle'
+                        />
+                      )
+                  }
+                  {recoveryInfo && (
                     <Badge
-                      className='warning'
-                      hover={t<string>('This is a development account derived from the known development seed. Do not use for any funds on a non-development network.')}
-                      icon='wrench'
-                    />
-                  )
-                  : (
-                    <Badge
-                      className='warning'
+                      className='recovery'
                       hover={
                         <div>
-                          <p>{t<string>('This account is available on all networks. It is recommended to link to a specific network via the account options ("only this network" option) to limit availability. For accounts from an extension, set the network on the extension.')}</p>
-                          <p>{t<string>('This does not send any transaction, rather it only sets the genesis in the account JSON.')}</p>
+                          <p>{t<string>('This account is recoverable, with the following friends:')}</p>
+                          <div>
+                            {recoveryInfo.friends.map((friend, index): React.ReactNode => (
+                              <AddressSmall
+                                key={index}
+                                value={friend}
+                              />
+                            ))}
+                          </div>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>{t<string>('threshold')}</td>
+                                <td>{formatNumber(recoveryInfo.threshold)}</td>
+                              </tr>
+                              <tr>
+                                <td>{t<string>('delay')}</td>
+                                <td>{formatNumber(recoveryInfo.delayPeriod)}</td>
+                              </tr>
+                              <tr>
+                                <td>{t<string>('deposit')}</td>
+                                <td>{formatBalance(recoveryInfo.deposit)}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       }
-                      icon='exclamation-triangle'
+                      icon='redo'
                     />
-                  )
-              }
-              {recoveryInfo && (
-                <Badge
-                  className='recovery'
-                  hover={
-                    <div>
-                      <p>{t<string>('This account is recoverable, with the following friends:')}</p>
-                      <div>
-                        {recoveryInfo.friends.map((friend, index): React.ReactNode => (
-                          <AddressSmall
-                            key={index}
-                            value={friend}
-                          />
-                        ))}
-                      </div>
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>{t<string>('threshold')}</td>
-                            <td>{formatNumber(recoveryInfo.threshold)}</td>
-                          </tr>
-                          <tr>
-                            <td>{t<string>('delay')}</td>
-                            <td>{formatNumber(recoveryInfo.delayPeriod)}</td>
-                          </tr>
-                          <tr>
-                            <td>{t<string>('deposit')}</td>
-                            <td>{formatBalance(recoveryInfo.deposit)}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  }
-                  icon='redo'
-                />
-              )}
-              {isProxied && !proxyInfo.hasOwned && (
-                <Badge
-                  className='important'
-                  hover={t<string>('Proxied account has no owned proxies')}
-                  icon='sitemap'
-                  info='0'
-                />
-              )}
-            </div>
-            <div className='action'>
-              {multiInfos && multiInfos.length !== 0 && (
-                <Badge
-                  className='important'
-                  color='purple'
-                  hover={t<string>('Multisig approvals pending')}
-                  hoverAction={t<string>('View pending approvals')}
-                  icon='file-signature'
-                  info={multiInfos.length}
-                  onClick={toggleMultisig}
-                />
-              )}
-              {delegation?.accountDelegated && (
-                <Badge
-                  className='information'
-                  hover={t<string>('This account has a governance delegation')}
-                  hoverAction={t<string>('Manage delegation')}
-                  icon='calendar-check'
-                  onClick={toggleDelegate}
-                />
-              )}
-              {!!proxy?.[0].length && api.api.tx.utility && (
-                <Badge
-                  className='information'
-                  hover={t<string>('This account has {{proxyNumber}} proxy set.', {
-                    replace: {
-                      proxyNumber: proxy[0].length
-                    }
-                  })}
-                  hoverAction={t<string>('Proxy overview')}
-                  icon='sitemap'
-                  onClick={toggleProxyOverview}
-                />
-              )}
-            </div>
-          </div>
-        </td>
-        <td className='address'>
-          <AddressSmall
-            parentAddress={meta.parentAddress}
-            value={address}
-            withShortAddress
-          />
-          {isBackupOpen && (
-            <Backup
-              address={address}
-              key='modal-backup-account'
-              onClose={toggleBackup}
-            />
-          )}
-          {isDelegateOpen && (
-            <DelegateModal
-              key='modal-delegate'
-              onClose={toggleDelegate}
-              previousAmount={delegation?.amount}
-              previousConviction={delegation?.conviction}
-              previousDelegatedAccount={delegation?.accountDelegated}
-              previousDelegatingAccount={address}
-            />
-          )}
-          {isDeriveOpen && (
-            <Derive
-              from={address}
-              key='modal-derive-account'
-              onClose={toggleDerive}
-            />
-          )}
-          {isForgetOpen && (
-            <Forget
-              address={address}
-              key='modal-forget-account'
-              onClose={toggleForget}
-              onForget={_onForget}
-            />
-          )}
-          {isIdentityMainOpen && (
-            <IdentityMain
-              address={address}
-              key='modal-identity-main'
-              onClose={toggleIdentityMain}
-            />
-          )}
-          {isIdentitySubOpen && (
-            <IdentitySub
-              address={address}
-              key='modal-identity-sub'
-              onClose={toggleIdentitySub}
-            />
-          )}
-          {isPasswordOpen && (
-            <ChangePass
-              address={address}
-              key='modal-change-pass'
-              onClose={togglePassword}
-            />
-          )}
-          {isTransferOpen && (
-            <Transfer
-              key='modal-transfer'
-              onClose={toggleTransfer}
-              senderId={address}
-            />
-          )}
-          {isProxyOverviewOpen && (
-            <ProxyOverview
-              key='modal-proxy-overview'
-              onClose={toggleProxyOverview}
-              previousProxy={proxy}
-              proxiedAccount={address}
-            />
-          )}
-          {isMultisigOpen && multiInfos && (
-            <MultisigApprove
-              address={address}
-              key='multisig-approve'
-              onClose={toggleMultisig}
-              ongoing={multiInfos}
-              threshold={meta.threshold as number}
-              who={meta.who as string[]}
-            />
-          )}
-          {isRecoverAccountOpen && (
-            <RecoverAccount
-              address={address}
-              key='recover-account'
-              onClose={toggleRecoverAccount}
-            />
-          )}
-          {isRecoverSetupOpen && (
-            <RecoverSetup
-              address={address}
-              key='recover-setup'
-              onClose={toggleRecoverSetup}
-            />
-          )}
-          {isUndelegateOpen && (
-            <UndelegateModal
-              accountDelegating={address}
-              key='modal-delegate'
-              onClose={toggleUndelegate}
-            />
-          )}
-        </td>
-        <td className='number'>
-          <CryptoType accountId={address} />
-        </td>
-        <td className='number media--1500'>
-          {balancesAll?.accountNonce.gt(BN_ZERO) && formatNumber(balancesAll.accountNonce)}
-        </td>
-        <td className='number'>
-          <AddressInfo
-            address={address}
-            balancesAll={balancesAll}
-            withBalance={BAL_OPTS_DEFAULT}
-            withExtended={false}
-          />
-        </td>
-        <td className='fast-actions'>
-          <div className='fast-actions-row'>
-            <LinkExternal
-              className='ui--AddressCard-exporer-link media--1400'
-              data={address}
-              type='address'
-            />
-            {isFunction(api.api.tx.balances?.transfer) && (
-              <Button
-                className='send-button'
-                icon='paper-plane'
-                label={t<string>('send')}
-                onClick={toggleTransfer}
+                  )}
+                  {isProxied && !proxyInfo.hasOwned && (
+                    <Badge
+                      className='important'
+                      hover={t<string>('Proxied account has no owned proxies')}
+                      icon='sitemap'
+                      info='0'
+                    />
+                  )}
+                </div>
+                <div className='action'>
+                  {multiInfos && multiInfos.length !== 0 && (
+                    <Badge
+                      className='important'
+                      color='purple'
+                      hover={t<string>('Multisig approvals pending')}
+                      hoverAction={t<string>('View pending approvals')}
+                      icon='file-signature'
+                      info={multiInfos.length}
+                      onClick={toggleMultisig}
+                    />
+                  )}
+                  {delegation?.accountDelegated && (
+                    <Badge
+                      className='information'
+                      hover={t<string>('This account has a governance delegation')}
+                      hoverAction={t<string>('Manage delegation')}
+                      icon='calendar-check'
+                      onClick={toggleDelegate}
+                    />
+                  )}
+                  {!!proxy?.[0].length && api.api.tx.utility && (
+                    <Badge
+                      className='information'
+                      hover={t<string>('This account has {{proxyNumber}} proxy set.', {
+                        replace: {
+                          proxyNumber: proxy[0].length
+                        }
+                      })}
+                      hoverAction={t<string>('Proxy overview')}
+                      icon='sitemap'
+                      onClick={toggleProxyOverview}
+                    />
+                  )}
+                </div>
+              </div>
+            </td>
+            <td className='address'>
+              <AddressSmall
+                parentAddress={meta.parentAddress}
+                value={delegation?.accountDelegated}
+                withShortAddress
               />
-            )}
-            <Popup
+              {isBackupOpen && (
+                <Backup
+                  address={address}
+                  key='modal-backup-account'
+                  onClose={toggleBackup}
+                />
+              )}
+              {isDelegateOpen && (
+                <DelegateModal
+                  key='modal-delegate'
+                  onClose={toggleDelegate}
+                  previousAmount={delegation?.amount}
+                  previousConviction={delegation?.conviction}
+                  previousDelegatedAccount={delegation?.accountDelegated}
+                  previousDelegatingAccount={address}
+                />
+              )}
+              {isDeriveOpen && (
+                <Derive
+                  from={address}
+                  key='modal-derive-account'
+                  onClose={toggleDerive}
+                />
+              )}
+              {isForgetOpen && (
+                <Forget
+                  address={address}
+                  key='modal-forget-account'
+                  onClose={toggleForget}
+                  onForget={_onForget}
+                />
+              )}
+              {isIdentityMainOpen && (
+                <IdentityMain
+                  address={address}
+                  key='modal-identity-main'
+                  onClose={toggleIdentityMain}
+                />
+              )}
+              {isIdentitySubOpen && (
+                <IdentitySub
+                  address={address}
+                  key='modal-identity-sub'
+                  onClose={toggleIdentitySub}
+                />
+              )}
+              {isPasswordOpen && (
+                <ChangePass
+                  address={address}
+                  key='modal-change-pass'
+                  onClose={togglePassword}
+                />
+              )}
+              {isTransferOpen && (
+                <Transfer
+                  key='modal-transfer'
+                  onClose={toggleTransfer}
+                  senderId={address}
+                />
+              )}
+              {isProxyOverviewOpen && (
+                <ProxyOverview
+                  key='modal-proxy-overview'
+                  onClose={toggleProxyOverview}
+                  previousProxy={proxy}
+                  proxiedAccount={address}
+                />
+              )}
+              {isMultisigOpen && multiInfos && (
+                <MultisigApprove
+                  address={address}
+                  key='multisig-approve'
+                  onClose={toggleMultisig}
+                  ongoing={multiInfos}
+                  threshold={meta.threshold as number}
+                  who={meta.who as string[]}
+                />
+              )}
+              {isRecoverAccountOpen && (
+                <RecoverAccount
+                  address={address}
+                  key='recover-account'
+                  onClose={toggleRecoverAccount}
+                />
+              )}
+              {isRecoverSetupOpen && (
+                <RecoverSetup
+                  address={address}
+                  key='recover-setup'
+                  onClose={toggleRecoverSetup}
+                />
+              )}
+              {isUndelegateOpen && (
+                <UndelegateModal
+                  accountDelegating={address}
+                  key='modal-delegate'
+                  onClose={toggleUndelegate}
+                />
+              )}
+            </td>
+            {/* <td className='number'>
+              <CryptoType accountId={address} />
+            </td>
+            <td className='number media--1500'>
+              {balancesAll?.accountNonce.gt(BN_ZERO) && formatNumber(balancesAll.accountNonce)}
+            </td>
+            <td className='number'>
+              <AddressInfo
+                address={address}
+                balancesAll={balancesAll}
+                withBalance={BAL_OPTS_DEFAULT}
+                withExtended={false}
+              />
+            </td> */}
+            {delegation?.accountDelegated && (
+                <td className='button'>
+                  {isFunction(api.api.tx.balances?.transfer) && (
+                    <Button
+                      icon='stop'
+                      label={t<string>('Undelegate')}
+                      onClick={toggleUndelegate}
+                    />
+                  )}
+                  {/* <Popup
               className={`theme--${theme}`}
-              isDisabled={!menuItems.length}
-              value={
-                <Menu>
-                  {menuItems}
-                </Menu>
+              isOpen={isSettingsOpen}
+              onClose={toggleSettings}
+              trigger={
+                <Button
+                  icon='ellipsis-v'
+                  isDisabled={!menuItems.length}
+                  onClick={toggleSettings}
+                />
               }
-            />
-            <ExpandButton
-              expanded={isExpanded}
-              onClick={toggleIsExpanded}
-            />
-          </div>
-        </td>
-      </tr>
-      <tr className={`${className} ${isExpanded ? 'isExpanded' : 'isCollapsed'}`}>
-        <td colSpan={2} />
-        <td>
-          <div
-            className='tags'
-            data-testid='tags'
-          >
-            <Tags
-              value={tags}
-              withTitle
-            />
-          </div>
-        </td>
-        <td className='media--1500' />
-        <td />
-        <td>
-          <AddressInfo
-            address={address}
-            balancesAll={balancesAll}
-            convictionLocks={convictionLocks}
-            withBalance={BAL_OPTS_EXPANDED}
-            withExtended={false}
-          />
-        </td>
-        <td colSpan={2} />
-      </tr>
+            >
+              <Menu
+                onClick={toggleSettings}
+                text
+                vertical
+              >
+                {menuItems}
+              </Menu>
+            </Popup> */}
+                </td>
+              )}
+            {/* <td className='fast-actions'>
+              <div className='fast-actions-row'>
+                <LinkExternal
+                  className='ui--AddressCard-exporer-link media--1400'
+                  data={address}
+                  type='address'
+                />
+                {isFunction(api.api.tx.balances?.transfer) && (
+                  <Button
+                    className='send-button'
+                    icon='paper-plane'
+                    label={t<string>('send')}
+                    onClick={toggleTransfer}
+                  />
+                )}
+                <Popup
+                  className={`theme--${theme}`}
+                  isDisabled={!menuItems.length}
+                  value={
+                    <Menu>
+                      {menuItems}
+                    </Menu>
+                  }
+                />
+                <ExpandButton
+                  expanded={isExpanded}
+                  onClick={toggleIsExpanded}
+                />
+              </div>
+            </td> */}
+          </tr>
+          <tr className={`${className} ${isExpanded ? 'isExpanded' : 'isCollapsed'}`}>
+            <td colSpan={2} />
+            <td>
+              <div
+                className='tags'
+                data-testid='tags'
+              >
+                <Tags
+                  value={tags}
+                  withTitle
+                />
+              </div>
+            </td>
+            <td className='media--1500' />
+            <td />
+            {/* <td>
+              <AddressInfo
+                address={address}
+                balancesAll={balancesAll}
+                convictionLocks={convictionLocks}
+                withBalance={BAL_OPTS_EXPANDED}
+                withExtended={false}
+              />
+            </td> */}
+            <td colSpan={2} />
+          </tr>
+        </div>
+      )}
     </>
   );
 }

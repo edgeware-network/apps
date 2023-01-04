@@ -26,20 +26,20 @@ import BannerClaims from './BannerClaims';
 import BannerExtension from './BannerExtension';
 import Summary from './Summary';
 
-interface Balances {
-  accounts: Record<string, AccountBalance>;
-  summary?: AccountBalance;
-}
+// interface Balances {
+//   accounts: Record<string, AccountBalance>;
+//   summary?: AccountBalance;
+// }
 
-interface Props {
-  className?: string;
-  onStatusChange: (status: ActionStatus) => void;
-}
+// interface Props {
+//   className?: string;
+//   onStatusChange: (status: ActionStatus) => void;
+// }
 
-interface SortControls {
-  sortBy: SortCategory;
-  sortFromMax: boolean;
-}
+// interface SortControls {
+//   sortBy: SortCategory;
+//   sortFromMax: boolean;
+// }
 
 const DEFAULT_SORT_CONTROLS: SortControls = { sortBy: 'date', sortFromMax: true };
 
@@ -115,7 +115,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
   );
 
   const header = useRef([
-    [t('accounts'), 'start', 3],
+    [t('Delegation'), 'start', 3],
     [t('type')],
     [t('transactions'), 'media--1500'],
     [t('balances'), 'balances'],
@@ -189,7 +189,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
 
   return (
     <div className={className}>
-      {isCreateOpen && (
+      {/* {isCreateOpen && (
         <CreateModal
           onClose={toggleCreate}
           onStatusChange={onStatusChange}
@@ -221,8 +221,8 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
           onClose={toggleQr}
           onStatusChange={onStatusChange}
         />
-      )}
-      <BannerExtension />
+      )} */}
+      {/* <BannerExtension />
       <BannerClaims />
       <Summary balance={balances.summary} />
       <SummaryBox>
@@ -284,7 +284,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
             onClick={toggleProxy}
           />
         </Button.Group>
-      </SummaryBox>
+      </SummaryBox> */}
       <Table
         empty={!isLoading && sortedAccounts && t<string>("You don't have any accounts. Some features are currently hidden and will only become available once you have accounts.")}
         header={header.current}

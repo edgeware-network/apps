@@ -42,7 +42,8 @@ function Delegate ({ onClose, previousAmount, previousConviction, previousDelega
     conviction !== previousConviction?.toNumber();
 
   return (
-    <Modal
+    <table>
+    {/* <Modal
       className='staking--Delegate'
       header={previousDelegatedAccount
         ? t<string>('democracy vote delegation')
@@ -50,7 +51,7 @@ function Delegate ({ onClose, previousAmount, previousConviction, previousDelega
       }
       onClose={onClose}
       size='large'
-    >
+    > */}
       <Modal.Content>
         <Modal.Columns
           hint={
@@ -126,7 +127,8 @@ function Delegate ({ onClose, previousAmount, previousConviction, previousDelega
           tx={api.tx.democracy.delegate}
         />
       </Modal.Actions>
-    </Modal>
+    {/* </Modal> */}
+    </table>
   );
 }
 
