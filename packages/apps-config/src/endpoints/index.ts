@@ -6,7 +6,7 @@ import type { LinkOption } from './types';
 
 import { defaultT } from '../util';
 import { createCustom, createDev, createOwn } from './development';
-import { prodChains, prodRelayKusama, prodRelayPolkadot, prodEdgewareNetwork } from './production';
+import { prodChains, prodEdgewareNetwork, prodRelayKusama, prodRelayPolkadot } from './production';
 import { testChains, testRelayRococo, testRelayWestend } from './testing';
 import { expandEndpoints } from './util';
 

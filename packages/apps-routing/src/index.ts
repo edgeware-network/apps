@@ -1,5 +1,6 @@
 // Copyright 2017-2022 @polkadot/apps-routing authors & contributors
 // SPDX-License-Identifier: Apache-2.0
+// This file has been edited
 
 import type { TFunction } from 'i18next';
 import type { Routes } from './types';
@@ -14,6 +15,7 @@ import claims from './claims';
 import collator from './collator';
 import contracts from './contracts';
 import council from './council';
+import ddelegation from './ddelegation';
 import democracy from './democracy';
 import explorer from './explorer';
 import extrinsics from './extrinsics';
@@ -70,6 +72,7 @@ export default function create (t: TFunction): Routes {
     // other governance-related
     treasury(t),
     bounties(t),
+    ddelegation(t),
     // others
     parachains(t),
     gilt(t),
