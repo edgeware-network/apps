@@ -16,6 +16,7 @@ import Statescan from './statescan';
 import SubId from './subid';
 import Subscan from './subscan';
 import Subsquare from './subsquare';
+import Edgscan from './edgscan';
 
 export const externalLinks: Record<string, ExternalDef> = {
   Commonwealth,
@@ -31,5 +32,6 @@ export const externalLinks: Record<string, ExternalDef> = {
   Statescan,
   SubId,
   Subscan,
-  Subsquare
+  Subsquare,
+  Edgscan
 };
