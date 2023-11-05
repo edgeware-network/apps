@@ -89,6 +89,7 @@ import extensionPolkadotJs from './extensions/polkadot-js.svg';
 import externalCommonwealth from './external/commonwealth.png';
 import externalDotreasury from './external/dotreasury.svg';
 import externalDotScanner from './external/dotscanner.png';
+import externalEdgscan from './external/edgscan.png';
 import externalKodaDot from './external/kodadot.png';
 import externalPolkaholic from './external/polkaholic.png';
 import externalPolkascan from './external/polkascan.png';
@@ -1024,6 +1025,7 @@ export const externalLogos: Record<string, unknown> = {
   commonwealth: externalCommonwealth,
   dotreasury: externalDotreasury,
   dotscanner: externalDotScanner,
+  edgscan: externalEdgscan,
   kodadot: externalKodaDot,
   polkaholic: externalPolkaholic,
   polkascan: externalPolkascan,
