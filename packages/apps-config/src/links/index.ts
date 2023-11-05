@@ -6,6 +6,7 @@ import type { ExternalDef } from './types';
 import Commonwealth from './commonwealth';
 import Dotreasury from './dotreasury';
 import DotScanner from './dotscanner';
+import Edgscan from './edgscan';
 import KodaDot from './kodadot';
 import Polkaholic from './polkaholic';
 import Polkascan from './polkascan';
@@ -16,12 +17,12 @@ import Statescan from './statescan';
 import SubId from './subid';
 import Subscan from './subscan';
 import Subsquare from './subsquare';
-import Edgscan from './edgscan';
 
 export const externalLinks: Record<string, ExternalDef> = {
   Commonwealth,
   DotScanner,
   Dotreasury,
+  Edgscan,
   KodaDot,
   Polkaholic,
   Polkascan,
@@ -32,6 +33,5 @@ export const externalLinks: Record<string, ExternalDef> = {
   Statescan,
   SubId,
   Subscan,
-  Subsquare,
-  Edgscan
+  Subsquare
 };
