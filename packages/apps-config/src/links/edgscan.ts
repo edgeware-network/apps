@@ -10,15 +10,15 @@ export default {
     Edgeware: 'edgeware'
   },
   create: (chain: string, path: string, data: BN | number | string): string =>
-    `https://edgscan.ink/${path}/${data.toString()}`,
+    `https://edgscan.ink/#/${path}/${data.toString()}`,
   isActive: true,
   logo: externalLogos.edgscan as string,
   paths: {
-    address: 'account',
-    block: 'block',
+    address: 'accounts',
+    block: 'blocks',
     bounty: 'bounty',
     council: 'council',
-    extrinsic: 'extrinsic',
+    extrinsic: 'extrinsics',
     proposal: 'democracy_proposal',
     referendum: 'referenda',
     tip: 'treasury_tip',
