@@ -6,6 +6,7 @@ import type { ExternalDef } from './types';
 import Commonwealth from './commonwealth';
 import Dotreasury from './dotreasury';
 import DotScanner from './dotscanner';
+import Edgscan from './edgscan';
 import KodaDot from './kodadot';
 import Polkaholic from './polkaholic';
 import Polkascan from './polkascan';
@@ -21,6 +22,7 @@ export const externalLinks: Record<string, ExternalDef> = {
   Commonwealth,
   DotScanner,
   Dotreasury,
+  Edgscan,
   KodaDot,
   Polkaholic,
   Polkascan,
