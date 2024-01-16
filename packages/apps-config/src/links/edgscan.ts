@@ -16,14 +16,7 @@ export default {
   paths: {
     address: 'accounts',
     block: 'blocks',
-    bounty: 'bounty',
-    council: 'council',
-    extrinsic: 'extrinsics',
-    proposal: 'democracy_proposal',
-    referendum: 'referenda',
-    tip: 'treasury_tip',
-    treasury: 'treasury',
-    validator: 'validator'
+    extrinsic: 'extrinsics'
   },
   url: 'https://edgscan.ink/'
 };
