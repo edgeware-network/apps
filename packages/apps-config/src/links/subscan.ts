@@ -32,7 +32,7 @@ export default {
     'DataHighway Tanganika Kusama Parachain': 'datahighway',
     Dock: 'dock',
     'Dolphin Parachain Testnet': 'dolphin',
-    Edgeware: 'edgeware',
+    // Edgeware: 'edgeware',
     Efinity: 'efinity',
     'Encointer on Kusama': 'encointer',
     'Equilibrium parachain': 'equilibrium',
