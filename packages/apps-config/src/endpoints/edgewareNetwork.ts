@@ -28,10 +28,10 @@ export const prodEdgewareNetwork: EndpointOption = {
   info: 'edgeware',
   text: 'Edgeware',
   providers: {
-    JelliedOwl: 'wss://edgeware.jelliedowl.net',
-    'Commonwealth Labs': 'wss://mainnet2.edgewa.re',
-    OnFinality: 'wss://edgeware.api.onfinality.io/public-ws',
-    Dwellir: 'wss://edgeware-rpc.dwellir.com'
+    'JelliedOwl London': 'wss://edgeware-rpc1.jelliedowl.net',
+    'JelliedOwl Los Angeles': 'wss://edgeware-rpc3.jelliedowl.net',
+    'JelliedOwl New York': 'wss://edgeware-rpc0.jelliedowl.net',
+    'JelliedOwl Singapore': 'wss://edgeware-rpc2.jelliedowl.net'
   },
   teleport: getTeleports(prodParasEdgewareCommon),
   linked: [
